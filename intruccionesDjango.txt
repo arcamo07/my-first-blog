@@ -1,0 +1,91 @@
+https://argentinaenpython.com/django-girls/tutorial/django_start_project/
+
+. myvenv/bin/activate
+
+python3 -m venv myvenv
+. myvenv/bin/activate
+pip install django~=1.11.0  o  pip install django
+django-admin startproject mysite .  # el punto siginifica que lo haga en el directorio actual   o   django-admin.py startproject  
+
+#manage.py es un script que ayuda con la administración del sitio. Con él podremos (entre otras cosas) iniciar un servidor web en nuestra computadora sin necesidad de instalar nada más.
+
+#El archivo settings.py contiene la configuración de tu sitio web.
+
+#¿Recuerdas cuando hablamos de una cartera que debía comprobar dónde entregar una carta? El archivo urls.py contiene una lista de los patrones utilizados por urlresolver.
+
+#Por ahora vamos a ignorar el resto de archivos porque no los vamos a cambiar. ¡Sólo acuérdate de no borrarlos accidentalmente!
+cd /home/armando/DjangoProject/mysite
+
+gedit settings.py
+
+#Modificar las siguientes lineas 
+
+ALLOWED_HOSTS = ['127.0.0.1', 'arcamo.pythonanywhere.com']
+
+LANGUAGE_CODE = 'es-mx'
+
+TIME_ZONE = 'America/Mexico_City'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+#Desde la ruta /home/armando/DjangoProject poner en terminal 
+python3 manage.py migrate
+#despues d q topo esta bien q nos genere la pagina con el url 
+python manage.py runserver
+
+#Ahora todo lo que necesitas hacer es comprobar que tu sitio se esté ejecutando. Abre el navegador (Firefox, Chrome, Safari, Internet Explorer o el que utilices) y escribe la dirección:
+
+http://127.0.0.1:8000/
+
+#Para iniciar un blog, crea una carpeta llamada blog con todos los archivos
+python manage.py startapp blog
+
+#Modificar settings
+
+gedit mysite/settings.py
+#Agragar blog
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog',
+]
+
+
+python manage.py makemigrations blog
+
+python manage.py migrate blog
+
+
+#editamos 
+
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)
+
+#Como puedes ver, importamos (incluimos) el modelo Post definido en el capítulo anterior. Para hacer nuestro modelo visible en la página del administrador, tenemos que registrar el modelo con admin.site.register(Post)
+
+
+
+(myvenv) ~/djangogirls$ python manage.py createsuperuser
+Username: armando
+Email address: admin@admin.com
+Password:07C@Blog
+Password (again):07C@Blog
+Superuser created successfully.
+
+python manage.py runserver
+http://127.0.0.1:8000/admin/
+
+armando
+07C@Blog
+
+#instalar en github para poner nuestro proyecto en internet
+sudo apt-get install git
+
+git config --global user.name "arcamo"
+git config --global user.email arcamo07@hotmail.com
