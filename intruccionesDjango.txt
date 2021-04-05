@@ -89,3 +89,23 @@ sudo apt-get install git
 
 git config --global user.name "arcamo"
 git config --global user.email arcamo07@hotmail.com
+
+crear un archivo llamado .gitignore que ignore todas las directiva que no queremos que suba
+
+*.pyc
+*~
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+
+
+
+git status
+git add --all .
+git commit -m "My Django Project app, first commit"
+
+#creando una cuenta en gituh.com
+
+Username: arcamo07
