@@ -1,5 +1,0 @@
-https://argentinaenpython.com/django-girls/tutorial/django_start_project/
-
-. myvenv/bin/activate
-
-
