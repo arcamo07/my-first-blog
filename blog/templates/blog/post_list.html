@@ -3,21 +3,19 @@
         <title> Armando's blog</title>
     </head>
     <body>
-        <div>
-            <h1><a href="/"><strong>Armando</strong> Blog</a></h1>
-        <div>
 
-        <div>
-            <p>published:07.04.2021 20:14</p>
-            <h2><a href="">Mi primer post</a></h2>
-            <p>Pequeña descripción del blogdel primer post, dar click en el título para ver que hace, saludos</p>
-        </div>
+       <div> 
+           <h1><a href="/">Armando Blog</a></h1>
+           <p> </p>
+       </div>
+        {% for post in posts %}
+            <div>
+                <p> </p>
+                <p><strong>published</strong>: {{ post.published_date}}</p>
+                <h1><a href="">{{post.title}}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            <div>
+        {% endfor %}
 
-        <div>
-            <p>published:07.04.2021 20:24</p>
-            <h2><a href="">Mi segundo post</a></h2>
-            <p>Pequeña descripción del blog segundo post, dar click en el título para ver que hace, a continuación una lista
-            <ul><li><strong>primer </strong> elemento</li><li>Segundo elemento</li></ul></p>
-        </div>
     </body>
 </html>
